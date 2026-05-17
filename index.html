@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>全国補助金カタログ2026 — システム投資・広告・販促・AI研修 | 株式会社KMST</title>
+<meta name="description" content="2026年5月時点の全国の補助金・助成金を「システム投資／広告／販促／AI研修」の4テーマで一括カタログ化。用途・エリア・自治体・業種で絞り込み可能。" />
+<style>
+:root{
+  --rausch:#ff385c; --rausch-deep:#e00b41;
+  --ink:#222222; --ink-soft:#3f3f3f; --gray:#6a6a6a; --line:#ebebeb;
+  --bg:#ffffff; --surface:#f7f7f7; --surface-warm:#fff7f8;
+  --shadow-card:0 0 0 1px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.04), 0 4px 8px rgba(0,0,0,0.1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Meiryo",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;font-weight:500;-webkit-font-smoothing:antialiased}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
+header.site .row{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1180px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--ink);letter-spacing:-0.2px}
+.brand img{height:28px;width:auto;display:block}
+.brand-tag{font-size:13px;color:var(--gray);font-weight:600;padding-left:12px;border-left:1px solid var(--line);letter-spacing:0.3px}
+.nav-tag{font-size:12px;color:var(--gray);font-weight:600;letter-spacing:0.4px;text-transform:uppercase}
+
+.hero{padding:64px 0 40px}
+.eyebrow{display:inline-block;padding:6px 14px;border-radius:999px;background:var(--surface-warm);color:var(--rausch);font-size:12px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase}
+h1{font-size:44px;font-weight:700;line-height:1.18;letter-spacing:-0.7px;margin:18px 0 14px}
+.lede{font-size:18px;color:var(--ink-soft);max-width:760px;line-height:1.7}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+.kpi{background:#fff;padding:22px;border-radius:20px;box-shadow:var(--shadow-card)}
+.kpi .label{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:0.6px;font-weight:700}
+.kpi .value{font-size:24px;font-weight:700;margin-top:6px;letter-spacing:-0.4px}
+.kpi .sub{font-size:12px;color:var(--gray);margin-top:4px}
+.kpi.accent .value{color:var(--rausch)}
+
+section{padding:36px 0}
+section + section{border-top:1px solid var(--line)}
+h2{font-size:26px;font-weight:700;letter-spacing:-0.5px;margin-bottom:16px}
+h3{font-size:17px;font-weight:700;margin-bottom:6px;letter-spacing:-0.2px}
+p{color:var(--ink-soft);font-size:15px}
+
+.filter-bar{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 22px;padding:16px;background:var(--surface);border-radius:16px}
+.filter-group{display:flex;flex-direction:column;gap:6px;min-width:180px}
+.filter-group label{font-size:11px;color:var(--gray);font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.filter-group select,.filter-group input{padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:14px;color:var(--ink);font-family:inherit}
+.filter-group input{min-width:220px}
+.filter-reset{align-self:flex-end;padding:10px 18px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;font-weight:600;font-size:13px;color:var(--ink)}
+.filter-reset:hover{background:var(--surface-warm);border-color:var(--rausch);color:var(--rausch)}
+.filter-summary{margin:8px 4px 0;font-size:13px;color:var(--gray)}
+.filter-summary strong{color:var(--rausch);font-weight:700;font-size:14px}
+
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
+.card{background:#fff;border-radius:18px;padding:20px 22px;box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:10px;transition:box-shadow .2s ease,transform .15s ease}
+.card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.08),var(--shadow-card);transform:translateY(-1px)}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.card-name{font-size:16px;font-weight:700;line-height:1.4;color:var(--ink);letter-spacing:-0.2px}
+.card-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.tag{display:inline-block;padding:2px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:0.3px}
+.tag.region{background:var(--surface);color:var(--ink-soft)}
+.tag.scope{background:#fff7f8;color:var(--rausch)}
+.tag.use{background:#222;color:#fff}
+.tag.industry{background:#eef5ff;color:#0d4d99}
+.card-kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;padding:10px;background:var(--surface);border-radius:10px}
+.card-kpi{display:flex;flex-direction:column;gap:2px}
+.card-kpi .l{font-size:10px;color:var(--gray);font-weight:700;text-transform:uppercase;letter-spacing:0.4px}
+.card-kpi .v{font-size:13px;font-weight:700;color:var(--ink);line-height:1.3}
+.card-kpi.deadline .v{color:var(--rausch)}
+.card-summary{font-size:13px;color:var(--ink-soft);line-height:1.6}
+.card-actions{display:flex;gap:8px;margin-top:6px;padding-top:10px;border-top:1px solid var(--line)}
+.btn-link{flex:1;text-align:center;padding:8px 12px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;transition:all .15s ease}
+.btn-detail{background:var(--rausch);color:#fff}
+.btn-detail:hover{background:var(--rausch-deep)}
+.btn-official{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn-official:hover{border-color:var(--rausch);color:var(--rausch)}
+
+.callout{background:var(--surface-warm);border-left:4px solid var(--rausch);padding:18px 22px;border-radius:14px;margin:18px 0}
+.callout strong{color:var(--rausch)}
+
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--gray);margin-top:8px}
+.legend span{display:inline-flex;align-items:center;gap:4px}
+.legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+
+.cta{background:var(--ink);color:#fff;padding:36px 32px;border-radius:24px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:20px}
+.cta h3{color:#fff;font-size:22px;margin-bottom:6px}
+.cta p{color:rgba(255,255,255,0.7);font-size:14px}
+.cta .btn{background:var(--rausch);color:#fff;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:700;white-space:nowrap;font-size:15px}
+.cta .btn:hover{background:var(--rausch-deep)}
+
+footer{padding:40px 0;text-align:center;color:var(--gray);font-size:13px;border-top:1px solid var(--line)}
+footer .brand-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:8px;font-weight:700;color:var(--ink)}
+
+#empty{display:none;text-align:center;padding:60px 20px;color:var(--gray)}
+#empty.show{display:block}
+
+@media (max-width:880px){
+  h1{font-size:30px}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .cards{grid-template-columns:1fr}
+  .filter-group{min-width:140px;flex:1}
+  .cta{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="row">
+    <div class="brand">
+      <img src="./kmst-logo.png" alt="株式会社KMST" />
+      <span class="brand-tag">全国補助金カタログ</span>
+    </div>
+    <div class="nav-tag">2026 / 全業種対応</div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="eyebrow">MASTER CATALOG / 2026 EDITION</span>
+    <h1>全国補助金カタログ<br/>2026年5月版</h1>
+    <p class="lede">中小企業が「システム投資・広告費・販促費・AI研修」に活用できる全国の補助金・助成金を一括カタログ化。用途／エリア／自治体／業種の4軸で絞り込めます。締切が近い制度は赤字で表示。</p>
+
+    <div class="kpis">
+      <div class="kpi accent">
+        <div class="label">収録件数</div>
+        <div class="value" id="totalCount">--</div>
+        <div class="sub">国・都道府県・市町村合算</div>
+      </div>
+      <div class="kpi">
+        <div class="label">調査時点</div>
+        <div class="value">2026.05</div>
+        <div class="sub">最新公募ベース</div>
+      </div>
+      <div class="kpi">
+        <div class="label">対応テーマ</div>
+        <div class="value">4軸</div>
+        <div class="sub">投資/広告/販促/研修</div>
+      </div>
+      <div class="kpi accent">
+        <div class="label">採択率</div>
+        <div class="value">80%超</div>
+        <div class="sub">KMST申請伴走</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>絞り込み</h2>
+    <p>4軸でフィルタリングして該当する補助金を表示します。複数条件をかけ合わせ可。</p>
+    <div class="filter-bar">
+      <div class="filter-group">
+        <label>用途</label>
+        <select id="fUse">
+          <option value="">すべて</option>
+          <option value="system投資">システム投資</option>
+          <option value="広告">広告費</option>
+          <option value="販促">販促費</option>
+          <option value="AI研修">AI研修・人材育成</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>エリア</label>
+        <select id="fRegion">
+          <option value="">すべて</option>
+          <option value="全国">全国（国制度）</option>
+          <option value="北海道">北海道</option>
+          <option value="東北">東北</option>
+          <option value="関東">関東</option>
+          <option value="中部">中部</option>
+          <option value="関西">関西</option>
+          <option value="中国">中国</option>
+          <option value="四国">四国</option>
+          <option value="九州">九州</option>
+          <option value="沖縄">沖縄</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>所管・自治体</label>
+        <select id="fCategory"><option value="">すべて</option></select>
+      </div>
+      <div class="filter-group">
+        <label>業種</label>
+        <select id="fIndustry"><option value="">すべて</option></select>
+      </div>
+      <div class="filter-group" style="flex:1;min-width:240px">
+        <label>キーワード検索</label>
+        <input type="text" id="fQuery" placeholder="補助金名・対象経費で検索" />
+      </div>
+      <button class="filter-reset" onclick="resetFilters()">条件をリセット</button>
+    </div>
+    <p class="filter-summary"><strong id="visibleCount">--</strong> 件 / 全 <span id="totalSummary">--</span> 件</p>
+  </section>
+
+  <section>
+    <h2>補助金一覧</h2>
+    <div class="legend">
+      <span><i style="background:#222"></i> 用途</span>
+      <span><i style="background:#fff7f8;border:1px solid #ff385c"></i> 所管</span>
+      <span><i style="background:#eef5ff;border:1px solid #0d4d99"></i> 業種</span>
+      <span><i style="background:#f7f7f7;border:1px solid #ebebeb"></i> エリア</span>
+    </div>
+    <div class="cards" id="cardList"></div>
+    <div id="empty">条件に合致する補助金が見つかりませんでした。条件を変更してください。</div>
+  </section>
+
+  <section>
+    <h2>使い方ガイド</h2>
+    <div class="callout">
+      <strong>POINT</strong> ｜ まずは「用途」で絞り、次に「エリア」で自社所在地に該当する補助金を確認してください。国制度（全国）は所在地を問わず申請可能、地方制度は所在地のある自治体のものを優先して検討します。締切赤字の案件は<em>2ヶ月以内</em>に動かないと間に合わないので、即座にKMSTにご相談ください。
+    </div>
+  </section>
+
+  <section>
+    <div class="cta">
+      <div>
+        <h3>気になる補助金の申請をご検討の方へ</h3>
+        <p>採択率80%超のKMSTが、対象判定〜事業計画策定〜実績報告まで一気通貫で伴走します。年間143件の補助金支援実績。</p>
+      </div>
+      <a class="btn" href="mailto:info@kmst.co.jp?subject=全国補助金カタログからの相談">無料相談する</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="brand-row"><img src="./kmst-logo.png" alt="株式会社KMST" style="height:22px;width:auto;vertical-align:middle" /></div>
+  <div>株式会社KMST ｜ 補助金コンサル年間143件 / 採択率80%超 / 香川県三豊市</div>
+  <div style="margin-top:6px;font-size:11px">本カタログは2026年5月13日時点の情報を基に作成。正式な公募要領は各公式ページをご確認ください。</div>
+</footer>
+
+<script src="./data.js"></script>
+<script>
+const USE_LABELS={"system投資":"システム投資","広告":"広告","販促":"販促","AI研修":"AI研修"};
+
+function renderCards(){
+  const fUse=document.getElementById('fUse').value;
+  const fRegion=document.getElementById('fRegion').value;
+  const fCategory=document.getElementById('fCategory').value;
+  const fIndustry=document.getElementById('fIndustry').value;
+  const fQuery=document.getElementById('fQuery').value.toLowerCase().trim();
+
+  const filtered=data.filter(d=>{
+    if(fUse && !d.uses.includes(fUse)) return false;
+    if(fRegion && d.region!==fRegion) return false;
+    if(fCategory && d.category!==fCategory) return false;
+    if(fIndustry && !(d.industry||"").includes(fIndustry) && fIndustry!=="全業種") return false;
+    if(fIndustry==="全業種" && d.industry!=="全業種") return false;
+    if(fQuery){
+      const txt=(d.name+d.summary+(d.category||"")+(d.industry||"")).toLowerCase();
+      if(!txt.includes(fQuery)) return false;
+    }
+    return true;
+  });
+
+  const list=document.getElementById('cardList');
+  list.innerHTML='';
+  filtered.forEach(d=>{
+    const card=document.createElement('div');
+    card.className='card';
+    const usesHtml=d.uses.map(u=>`<span class="tag use">${USE_LABELS[u]||u}</span>`).join('');
+    const detailBtn=d.detail?`<a class="btn-link btn-detail" href="${d.detail}">詳細レポート</a>`:'';
+    card.innerHTML=`
+      <div class="card-top">
+        <div>
+          <div class="card-name">${d.name}</div>
+          <div class="card-meta">
+            <span class="tag region">${d.region}</span>
+            <span class="tag scope">${d.scope}</span>
+            <span class="tag industry">${d.industry||"全業種"}</span>
+            ${usesHtml}
+          </div>
+        </div>
+      </div>
+      <div class="card-kpis">
+        <div class="card-kpi"><div class="l">上限</div><div class="v">${d.max}</div></div>
+        <div class="card-kpi"><div class="l">補助率</div><div class="v">${d.rate}</div></div>
+        <div class="card-kpi deadline"><div class="l">締切</div><div class="v">${d.deadline}</div></div>
+        <div class="card-kpi"><div class="l">所管</div><div class="v">${d.category}</div></div>
+      </div>
+      <div class="card-summary">${d.summary}</div>
+      <div class="card-actions">
+        ${detailBtn}
+        <a class="btn-link btn-official" href="${d.url}" target="_blank" rel="noopener">公式サイト</a>
+      </div>
+    `;
+    list.appendChild(card);
+  });
+
+  document.getElementById('visibleCount').textContent=filtered.length;
+  document.getElementById('empty').classList.toggle('show',filtered.length===0);
+}
+
+function populateSelect(id,values){
+  const sel=document.getElementById(id);
+  values.forEach(v=>{
+    const opt=document.createElement('option');
+    opt.value=v;opt.textContent=v;sel.appendChild(opt);
+  });
+}
+
+function init(){
+  const categories=[...new Set(data.map(d=>d.category))].sort();
+  populateSelect('fCategory',categories);
+  const industries=[...new Set(data.map(d=>d.industry).filter(Boolean))].sort();
+  populateSelect('fIndustry',industries);
+  document.getElementById('totalCount').textContent=data.length;
+  document.getElementById('totalSummary').textContent=data.length;
+  ['fUse','fRegion','fCategory','fIndustry'].forEach(id=>document.getElementById(id).addEventListener('change',renderCards));
+  document.getElementById('fQuery').addEventListener('input',renderCards);
+  renderCards();
+}
+
+function resetFilters(){
+  ['fUse','fRegion','fCategory','fIndustry'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('fQuery').value='';
+  renderCards();
+}
+
+init();
+</script>
+</body>
+</html>

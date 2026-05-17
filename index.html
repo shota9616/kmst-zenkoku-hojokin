@@ -61,6 +61,7 @@ p{color:var(--ink-soft);font-size:15px}
 .tag.region{background:var(--surface);color:var(--ink-soft)}
 .tag.scope{background:#fff7f8;color:var(--rausch)}
 .tag.use{background:#222;color:#fff}
+.tag.new{background:var(--rausch);color:#fff;letter-spacing:0.5px}
 .tag.industry{background:#eef5ff;color:#0d4d99}
 .card-kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;padding:10px;background:var(--surface);border-radius:10px}
 .card-kpi{display:flex;flex-direction:column;gap:2px}
@@ -259,11 +260,17 @@ function renderCards(){
     card.className='card';
     const usesHtml=d.uses.map(u=>`<span class="tag use">${USE_LABELS[u]||u}</span>`).join('');
     const detailBtn=d.detail?`<a class="btn-link btn-detail" href="${d.detail}">詳細レポート</a>`:'';
+    let newBadge='';
+    if(d.added){
+      const days=(Date.now()-new Date(d.added).getTime())/86400000;
+      if(days>=0 && days<=21) newBadge='<span class="tag new">NEW</span>';
+    }
     card.innerHTML=`
       <div class="card-top">
         <div>
           <div class="card-name">${d.name}</div>
           <div class="card-meta">
+            ${newBadge}
             <span class="tag region">${d.region}</span>
             <span class="tag scope">${d.scope}</span>
             <span class="tag industry">${d.industry||"全業種"}</span>

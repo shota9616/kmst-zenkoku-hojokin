@@ -1,3 +1,5 @@
 .vercel
 *.bak
 .DS_Store
+scripts/watch_result.json
+__pycache__

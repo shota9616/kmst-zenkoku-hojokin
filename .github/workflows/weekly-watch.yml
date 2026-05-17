@@ -1,0 +1,56 @@
+name: Weekly Subsidy Watch
+
+# 毎週月曜 0:00 UTC（= 8:00 マレーシア時間）に実行。手動実行も可。
+on:
+  schedule:
+    - cron: "0 0 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリを取得
+        uses: actions/checkout@v4
+
+      - name: Python セットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 週次ウォッチ実行（Jグランツ API 差分検知）
+        run: python3 scripts/weekly_watch.py
+
+      - name: 実行結果を読み取り
+        id: result
+        run: |
+          ADDED=$(python3 -c 'import json;print(json.load(open("scripts/watch_result.json"))["added_count"])')
+          TOTAL=$(python3 -c 'import json;print(json.load(open("scripts/watch_result.json"))["total_count"])')
+          echo "added=$ADDED" >> "$GITHUB_OUTPUT"
+          echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
+
+      - name: カタログ更新をコミット
+        if: steps.result.outputs.added != '0'
+        run: |
+          git config user.name "KMST Subsidy Watch"
+          git config user.email "info@kmst.co.jp"
+          git add data.js
+          git commit -m "週次更新: 新着${{ steps.result.outputs.added }}件を追記（総${{ steps.result.outputs.total }}件）"
+          git push
+
+      - name: Vercel 本番デプロイ
+        if: steps.result.outputs.added != '0'
+        env:
+          VERCEL_ORG_ID: team_BPRuGNYMoYZvaJG1X04IeSbz
+          VERCEL_PROJECT_ID: prj_ikA6cBADnKZMXaX43AWH9tDVfs9o
+        run: |
+          npm i -g vercel@latest
+          vercel deploy --prod --yes --token="${{ secrets.VERCEL_TOKEN }}"
+
+      - name: Discord 通知
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python3 scripts/notify_discord.py
